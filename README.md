@@ -23,4 +23,4 @@
 
 **GitHub Pages**
 
-* [Ссылка на проект на гитхабе] () 
+* [Ссылка на проект на гитхабе] (https://rusgic.github.io/mesto/index.html) 
