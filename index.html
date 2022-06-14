@@ -16,7 +16,8 @@
 		<section class="profile">
 			<img class="profile__avatar" src="./images/image.svg" alt="Жак-Ив Кусто">
 			<div class="profile__info">
-				<div> <!--Верстка ломается при удалении этого элемента-->
+				<div>
+					<!--Верстка ломается при удалении этого div и придется вводить излишние конструкции-->
 					<h1 class="profile__title">Жак-Ив Кусто</h1>
 					<p class="profile__subtitle">Исследователь океана</p>
 				</div>
@@ -33,7 +34,7 @@
 				</div>
 			</div>
 			<div class="element">
-				<img class="element__image" src="./images/2.jpg" alt="Эльбрус">
+				<img class="element__image" src="./images/2.jpg" alt="Гора Эльбрус">
 				<div class="element__info">
 					<h2 class="element__text">Гора Эльбрус</h2>
 					<button class="button_like" type="button">
@@ -47,7 +48,7 @@
 				</div>
 			</div>
 			<div class="element">
-				<img class="element__image" src="./images/2.jpg" alt="Эльбрус">
+				<img class="element__image" src="./images/2.jpg" alt="Гора Эльбрус">
 				<div class="element__info">
 					<h2 class="element__text">Гора Эльбрус</h2>
 					<button class="button_like" type="button">
@@ -75,13 +76,13 @@
 	<div class="popup">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
+			<button type="button" class="button button_type_close"></button>
 			<form name="form" class="popup__form">
 				<input type="text" id="firstname" name="firstname" class="popup__input popup__input_name-first"
-					placeholder="Имя" value="Жак-Ив Кусто">
+					placeholder="Имя" value="">
 				<input type="text" id="prof" name="prof" class="popup__input popup__input_name-two" placeholder="Описание"
-					value="Исследователь океана">
-				<button type="submit" class="button button_save" value="Сохранить">Сохранить</button>
-				<button type="button" class="button button_close"></button>
+					value="">
+				<button type="submit" class="button button_type_save" value="Сохранить">Сохранить</button>
 			</form>
 		</div>
 	</div>
