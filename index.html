@@ -10,63 +10,61 @@
 
 <body class="page">
 	<header class="header">
-		<div class="logo">
-			<img src="./images/Vector.svg" alt="Место Россия">
-		</div>
+		<img class="logo" src="./images/Vector.svg" alt="Место Россия">
 	</header>
 	<main>
 		<section class="profile">
 			<img class="profile__avatar" src="./images/image.svg" alt="Жак-Ив Кусто">
 			<div class="profile__info">
-				<div>
+				<div> <!--Верстка ломается при удалении этого элемента-->
 					<h1 class="profile__title">Жак-Ив Кусто</h1>
 					<p class="profile__subtitle">Исследователь океана</p>
 				</div>
-				<button class="profile__edit-button"></button>
+				<button class="profile__edit-button" type="button"></button>
 			</div>
-			<button class="profile__add-button"></button>
+			<button class="profile__add-button" type="button"></button>
 		</section>
 		<section class="elements">
 			<div class="element">
-				<img src="./images/3.jpg" alt="Карачаевск">
+				<img class="element__image" src="./images/3.jpg" alt="Карачаевск">
 				<div class="element__info">
 					<h2 class="element__text">Карачаево-Черкеск</h2>
-					<img class="like" src="./images/like.svg" alt="">
+					<button class="button_like" type="button">
 				</div>
 			</div>
 			<div class="element">
-				<img src="./images/2.jpg" alt="Эльбрус">
+				<img class="element__image" src="./images/2.jpg" alt="Эльбрус">
 				<div class="element__info">
 					<h2 class="element__text">Гора Эльбрус</h2>
-					<img class="like" src="./images/like.svg" alt="">
+					<button class="button_like" type="button">
 				</div>
 			</div>
 			<div class="element">
-				<img src="./images/1.jpg" alt="Домбай">
+				<img class="element__image" src="./images/1.jpg" alt="Домбай">
 				<div class="element__info">
 					<h2 class="element__text">Домбай</h2>
-					<img class="like" src="./images/like.svg" alt="">
+					<button class="button_like" type="button">
 				</div>
 			</div>
 			<div class="element">
-				<img src="./images/2.jpg" alt="Эльбрус">
+				<img class="element__image" src="./images/2.jpg" alt="Эльбрус">
 				<div class="element__info">
 					<h2 class="element__text">Гора Эльбрус</h2>
-					<img class="like" src="./images/like.svg" alt="">
+					<button class="button_like" type="button">
 				</div>
 			</div>
 			<div class="element">
-				<img src="./images/1.jpg" alt="Домбай">
+				<img class="element__image" src="./images/1.jpg" alt="Домбай">
 				<div class="element__info">
 					<h2 class="element__text">Домбай</h2>
-					<img class="like" src="./images/like.svg" alt="">
+					<button class="button_like" type="button">
 				</div>
 			</div>
 			<div class="element">
-				<img src="./images/3.jpg" alt="Карачаево-Черкеск">
+				<img class="element__image" src="./images/3.jpg" alt="Карачаево-Черкеск">
 				<div class="element__info">
 					<h2 class="element__text">Карачаево-Черкеск</h2>
-					<img class="like" src="./images/like.svg" alt="">
+					<button class="button_like" type="button">
 				</div>
 			</div>
 		</section>
@@ -77,10 +75,10 @@
 	<div class="popup">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
-			<form class="popup__form">
-				<input type="text" id="firstname" name="firstname" class="popup__firstname" placeholder="Имя"
-					value="Жак-Ив Кусто">
-				<input type="text" id="prof" name="prof" class="popup__prof" placeholder="Описание"
+			<form name="form" class="popup__form">
+				<input type="text" id="firstname" name="firstname" class="popup__input popup__input_name-first"
+					placeholder="Имя" value="Жак-Ив Кусто">
+				<input type="text" id="prof" name="prof" class="popup__input popup__input_name-two" placeholder="Описание"
 					value="Исследователь океана">
 				<button type="submit" class="button button_save" value="Сохранить">Сохранить</button>
 				<button type="button" class="button button_close"></button>
