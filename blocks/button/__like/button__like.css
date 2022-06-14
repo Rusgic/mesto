@@ -1,4 +1,4 @@
-.button_like {
+.button__like {
 	background-image: url(../../../images/like.svg);
 	background-repeat: no-repeat;
 	width: 22px;
@@ -9,7 +9,7 @@
 	align-self: center;
 }
 
-.button_like:hover {
+.button__like:hover {
 	opacity: 0.5;
 	color: black;
 }
