@@ -1,4 +1,5 @@
-.button_save {
+.button_type_save {
+	border:0;
 	margin:48px auto 37px;
 	width:358px;
 	height:50px;
@@ -11,16 +12,19 @@
 	color: #FFFFFF;
 	background-color:#000000;
 	border-radius: 2px;
+	padding:0;
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
-	.button_save {
+	.button_type_save {
 		margin:45px auto 25px;
 		width:238px;
 		height:46px;
+		font-size: 14px;
+		line-height: 17px;
 	}
 }
 
-.button_save:hover {
+.button_type_save:hover {
 	opacity: 0.8;
 }
