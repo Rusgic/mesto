@@ -1,19 +1,19 @@
-.element__like-button {
-	background-image: url(../../../images/like.svg);
+.element__delete-button {
+	background-image: url(../../../images/urna.svg);
 	background-repeat: no-repeat;
 	background-color: transparent;
-	width: 22px;
+	width: 18px;
 	height: 19px;
 	background-size: cover;
 	border:0px;
 	padding:0px;
-	align-self: center;
+	position:absolute;
+	right:20px;
+	top:20px;
 	cursor: pointer;
 }
 
-.element__like-button:hover {
+.element__delete-button:hover {
 	opacity: 0.5;
 	color: black;
 }
-
-
