@@ -26,48 +26,15 @@
 			<button class="profile__add-button" type="button"></button>
 		</section>
 		<section class="elements">
-			<div class="element">
-				<img class="element__image" src="./images/3.jpg" alt="Карачаевск">
-				<div class="element__info">
-					<h2 class="element__text">Карачаево-Черкеск</h2>
-					<button class="element__like-button" type="button"></button>
+			<template id="element">
+				<div class="element">
+					<img class="element__image" src="" alt="">
+					<div class="element__info">
+						<h2 class="element__text"></h2>
+						<button class="element__like-button" type="button"></button>
+					</div>
 				</div>
-			</div>
-			<div class="element">
-				<img class="element__image" src="./images/2.jpg" alt="Гора Эльбрус">
-				<div class="element__info">
-					<h2 class="element__text">Гора Эльбрус</h2>
-					<button class="element__like-button" type="button"></button>
-				</div>
-			</div>
-			<div class="element">
-				<img class="element__image" src="./images/1.jpg" alt="Домбай">
-				<div class="element__info">
-					<h2 class="element__text">Домбай</h2>
-					<button class="element__like-button" type="button"></button>
-				</div>
-			</div>
-			<div class="element">
-				<img class="element__image" src="./images/2.jpg" alt="Гора Эльбрус">
-				<div class="element__info">
-					<h2 class="element__text">Гора Эльбрус</h2>
-					<button class="element__like-button" type="button"></button>
-				</div>
-			</div>
-			<div class="element">
-				<img class="element__image" src="./images/1.jpg" alt="Домбай">
-				<div class="element__info">
-					<h2 class="element__text">Домбай</h2>
-					<button class="element__like-button" type="button"></button>
-				</div>
-			</div>
-			<div class="element">
-				<img class="element__image" src="./images/3.jpg" alt="Карачаево-Черкеск">
-				<div class="element__info">
-					<h2 class="element__text">Карачаево-Черкеск</h2>
-					<button class="element__like-button" type="button"></button>
-				</div>
-			</div>
+			</template>
 		</section>
 	</main>
 	<footer class="footer">
@@ -83,6 +50,19 @@
 				<input type="text" id="prof" name="prof" class="popup__input popup__input_type_description"
 					placeholder="Описание" value="">
 				<button type="submit" class="button button_type_save" value="Сохранить">Сохранить</button>
+			</form>
+		</div>
+	</div>
+	<div class="popup-card">
+		<div class="popup-card__container">
+			<h2 class="popup-card__title">Новое место</h2>
+			<button type="button" class="button button_type_close"></button>
+			<form name="form-card" class="popup-card__form">
+				<input type="text" id="title" name="title" class="popup-card__input popup-card__input_type_title"
+					placeholder="Название" value="">
+				<input type="text" id="link" name="link" class="popup-card__input popup-card__input_type_link"
+					placeholder="Ссылка на картинку" value="">
+				<button type="submit" class="button button_type_save" value="Сохранить">Создать</button>
 			</form>
 		</div>
 	</div>
