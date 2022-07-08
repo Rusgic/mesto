@@ -32,8 +32,6 @@ const initialCards = [
 	}
 ];
 
-// Перестановка элементов массива
-initialCards.reverse();
 // Popup c информацией о авторе
 const popupProfile = document.querySelector('.popup');
 // Popup с информацией о карточке
@@ -79,53 +77,20 @@ function renderInitialCards() {
 //Функция добавления карточки
 function addCard(el) {
 	const newCard = cardTemplate.cloneNode(true);
-	newCard.querySelector('.element__text').textContent = el.name;
 	const elementImage = newCard.querySelector('.element__image');
+	newCard.querySelector('.element__text').textContent = el.name;
 	elementImage.src = el.link;
 	elementImage.alt = el.name;
 	setEventListeners(newCard);
-	cardsContainer.append(newCard);
+	renderCard(newCard);
+}
+
+// Функция добавления карточки в разметку
+function renderCard (card) {
+	cardsContainer.prepend(card);
 }
 
 renderInitialCards();
-
-function createCard() {
-	
-}
-
-function htmlCard() {
-	
-}
-
-
-/*
-function renderInitialCards() {
-	initialCards.forEach(renderCard);
-}
-
-function renderCard(el) {
-	const newCard = cardTemplate.cloneNode(true);
-	newCard.querySelector('.element__text').textContent = el.name;
-	const elementImage = newCard.querySelector('.element__image');
-	elementImage.src = el.link;
-	elementImage.alt = el.name;
-	setEventListeners(newCard);
-	cardsContainer.append(newCard);
-}
-
-renderInitialCards();
-
-function addCard() {
-	const newCard = cardTemplate.cloneNode(true);
-	newCard.querySelector('.element__text').textContent = titleInput.value;
-	const elementImage = newCard.querySelector('.element__image');
-	elementImage.src = linkInput.value;
-	elementImage.alt = titleInput.value;
-	setEventListeners(newCard);
-	cardsContainer.prepend(newCard);
-}
-
-*/
 
 // Функция удаления карточки
 function deleteCard(evt) {
@@ -140,16 +105,20 @@ function likeCard(evt) {
 // Функция проставления ивент-листенеров карточки, такие как лайк, удаление, открытия картинки
 function setEventListeners(NewCard) {
 	// Кнопка удаления карточки
-	const deleteButton = NewCard.querySelector('.element__delete-button');
-	deleteButton.addEventListener('click', deleteCard);
+	const buttonDeleteCard = NewCard.querySelector('.element__delete-button');
+	buttonDeleteCard.addEventListener('click', deleteCard);
 	// Кнопка лайка
-	const likeButton = NewCard.querySelector('.element__like-button');
-	likeButton.addEventListener('click', likeCard);
+	const buttonAddLike = NewCard.querySelector('.element__like-button');
+	buttonAddLike.addEventListener('click', likeCard);
 	// Формально это картинка и в то же время кнопка
 	const image = NewCard.querySelector('.element__image');
 	image.addEventListener('click', () =>
 		openPopupImage(image));
 }
+
+
+// Все попапы обладают своими функциями и приведение их к одной функции открытия невозможно. 
+// Либо придется создавать доп. функции опять же индивидуальными для каждого попапа.
 
 // Функция открытия попапа с картинкой
 function openPopupImage(image) {
@@ -166,23 +135,15 @@ function openPopup() {
 	professionInput.value = professionHuman.textContent;
 }
 
-// Функция закрытия попапа с картинкой
-function closePopupImage() {
-	popupPhoto.classList.remove('popup-photo__oppened');
-}
-
 // Функция открытия попапа с карточкой
 function openPopupCard() {
 	popupCard.classList.add('popup-card__oppened');
 }
 
-// Функция закрытия попапа с инф. о авторе
+// Функция закрытия попапа с инф. о авторе, с картинкой, карточки
 function closePopup() {
 	popupProfile.classList.remove('popup__oppened');
-}
-
-// Функция закрытия попапа карточки
-function closePopupCard() {
+	popupPhoto.classList.remove('popup-photo__oppened');
 	popupCard.classList.remove('popup-card__oppened');
 }
 
@@ -197,17 +158,23 @@ function submitFormHandlerProfile(evt) {
 // Отправка данных карточки
 function submitFormHandlerPopupCard(evt) {
 	evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
+	const item = 
+	{
+		name:'',
+		link:''
+	}
+	item.name = titleInput.value;
+	item.link = linkInput.value;
+	addCard(item);
 	evt.target.reset(); // Эта строчка очищает поля формы.
-	addCard()
-	console.log(addCard);
-	closePopupCard();
+	closePopup();
 }
 
 buttonAddCard.addEventListener('click', openPopupCard);
 buttonClosePopupProfile.addEventListener('click', closePopup);
 buttonEditProfile.addEventListener('click', openPopup);
-buttonClosePopupCard.addEventListener('click', closePopupCard);
-buttonClosePopupImage.addEventListener('click', closePopupImage);
+buttonClosePopupCard.addEventListener('click', closePopup);
+buttonClosePopupImage.addEventListener('click', closePopup);
 
 formElementCard.addEventListener('submit', submitFormHandlerPopupCard);
 formElement.addEventListener('submit', submitFormHandlerProfile);
