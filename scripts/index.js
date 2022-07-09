@@ -77,8 +77,6 @@ function renderInitialCards() {
 function addCard(item) {
 	const card = createCard(item);
 	renderCard(card);
-	setCardEventListeners(card);
-	renderCard(card);
 }
 
 // Функция создания карточки
@@ -89,6 +87,7 @@ function createCard(item) {
 	elementText.textContent = item.name;
 	elementImage.src = item.link;
 	elementImage.alt = item.name;
+	setCardEventListeners(newCard);
 	return newCard;
 }
 
