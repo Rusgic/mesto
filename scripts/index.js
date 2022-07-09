@@ -64,7 +64,7 @@ const cardTemplate = document.querySelector('#element__card').content.firstEleme
 // Контейнер карточек
 const cardsContainer = document.querySelector('.elements');
 // Переменная с изображением карточки
-const popupPhotoImg = document.querySelector('.popup__picture_big');
+const popupPhotoImg = document.querySelector('.popup__big-photo');
 // Переменная с текстом карточки
 const popupPhotoTextInput = document.querySelector('.popup__text');
 
