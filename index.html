@@ -42,7 +42,7 @@
 	<footer class="footer">
 		<p class="footer__copy">&copy; 2020 Mesto Russia</p>
 	</footer>
-	<div class="popup">
+	<div class="popup popup_profile">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
 			<button type="button" class="button button_type_close" aria-label="Закрыть попап профиля"></button>
@@ -55,25 +55,25 @@
 			</form>
 		</div>
 	</div>
-	<div class="popup-card">
-		<div class="popup-card__container">
-			<h2 class="popup-card__title">Новое место</h2>
-			<button type="buttonCard" class="buttonCard buttonCard_type_close" aria-label="Закрыть попап карточки"></button>
-			<form name="form-card" class="popup-card__form">
-				<input type="text" id="title" name="title" class="popup-card__input popup-card__input_type_title"
-					placeholder="Название" value="">
-				<input type="text" id="url" name="url" class="popup-card__input popup-card__input_type_link"
+	<div class="popup popup_card">
+		<div class="popup__container">
+			<h2 class="popup__title">Новое место</h2>
+			<button type="button" class="buttonCard buttonCard_type_close" aria-label="Закрыть попап карточки"></button>
+			<form name="form-card" class="popup__form popup__form_card">
+				<input type="text" id="title" name="title" class="popup__input popup__input_type_title" placeholder="Название"
+					value="">
+				<input type="text" id="url" name="url" class="popup__input popup__input_type_link"
 					placeholder="Ссылка на картинку" value="">
 				<button type="submit" class="button button_type_save" value="Сохранить">Создать</button>
 			</form>
 		</div>
 	</div>
-	<div class="popup-photo">
-		<div class="popup-photo__container">
-			<figure class="popup-photo__window"><img class="popup-photo__pic" src="#">
-				<figcaption class="popup-photo__text"></figcaption>
+	<div class="popup popup_photo">
+		<div class="popup__container_photo">
+			<button type="button" class="buttonImage buttonImage_type_close" aria-label="Закрыть попап картинки"></button>
+			<figure class="popup__picture"><img class="popup__picture_big" src="#">
+				<figcaption class="popup__text"></figcaption>
 			</figure>
-			<button type="buttonImage" class="buttonImage buttonImage_type_close" aria-label="Закрыть попап картинки"></button>
 		</div>
 	</div>
 	<script src="./scripts/index.js"></script>

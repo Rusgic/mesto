@@ -4,7 +4,6 @@ const buttonAddCard = document.querySelector('.profile__add-button');
 // Кнопка добавления информации о авторе
 const buttonEditProfile = document.querySelector('.profile__edit-button');
 // Начальный массив карточек из "Коробки"
-// Вынос в отдельный JS файл не делал, т.к насколько я понимаю, это будет в дальнейшем спринте. В этом этого не требуют.
 const initialCards = [
 	{
 		name: 'Архыз',
@@ -33,41 +32,41 @@ const initialCards = [
 ];
 
 // Popup c информацией о авторе
-const popupProfile = document.querySelector('.popup');
+const popupProfile = document.querySelector('.popup_profile');
 // Popup с информацией о карточке
-const popupCard = document.querySelector('.popup-card');
+const popupCard = document.querySelector('.popup_card');
 // Popup с отображением увеличенной фотографии
-const popupPhoto = document.querySelector('.popup-photo');
-// Кнопка закрытия Popup c информацией о авторе
+const popupPhoto = document.querySelector('.popup_photo');
+// Кнопка закрытия popup-ов c профилем
 const buttonClosePopupProfile = document.querySelector('.button_type_close');
-// Кнопка закрытия Popup c информацией о карточке
+// Кнопка закрытия popup-ов c карточкой
 const buttonClosePopupCard = document.querySelector('.buttonCard_type_close');
-// Кнопка закрытия Popup c увеличенной фотографией
+// Кнопка закрытия popup c увеличенной картинкой
 const buttonClosePopupImage = document.querySelector('.buttonImage_type_close');
 // Форма PopupProfile c кнопками и полями ввода
 const formElement = document.querySelector('.popup__form');
 // Форма PopupCard c кнопками и полями ввода
-const formElementCard = document.querySelector('.popup-card__form');
+const formElementCard = document.querySelector('.popup__form_card');
 // Поле ввода имени автора
 const nameInput = document.querySelector('.popup__input_type_name');
 // Поле ввода професии автора
 const professionInput = document.querySelector('.popup__input_type_description');
 // Поле ввода названия карточки
-const titleInput = document.querySelector('.popup-card__input_type_title');
+const titleInput = document.querySelector('.popup__input_type_title');
 // Поле ввода ссылки на расположение карточки
-const linkInput = document.querySelector('.popup-card__input_type_link');
+const linkInput = document.querySelector('.popup__input_type_link');
 // Имя человека
 const nameHuman = document.querySelector('.profile__title');
 // Профессия человека
 const professionHuman = document.querySelector('.profile__subtitle');
 // Переменная с клонированным содержимым карточки
-const cardTemplate = document.querySelector('#element__card').content;
+const cardTemplate = document.querySelector('#element__card').content.firstElementChild;
 // Контейнер карточек
 const cardsContainer = document.querySelector('.elements');
 // Переменная с изображением карточки
-const popupPhotoImg = document.querySelector('.popup-photo__pic');
+const popupPhotoImg = document.querySelector('.popup__picture_big');
 // Переменная с текстом карточки
-const popupPhotoTextInput = document.querySelector('.popup-photo__text');
+const popupPhotoTextInput = document.querySelector('.popup__text');
 
 // Рендер начальных карточек
 function renderInitialCards() {
@@ -75,18 +74,26 @@ function renderInitialCards() {
 }
 
 //Функция добавления карточки
-function addCard(el) {
+function addCard(item) {
+	const card = createCard(item);
+	renderCard(card);
+	setCardEventListeners(card);
+	renderCard(card);
+}
+
+// Функция создания карточки
+function createCard(item) {
 	const newCard = cardTemplate.cloneNode(true);
 	const elementImage = newCard.querySelector('.element__image');
-	newCard.querySelector('.element__text').textContent = el.name;
-	elementImage.src = el.link;
-	elementImage.alt = el.name;
-	setEventListeners(newCard);
-	renderCard(newCard);
+	const elementText = newCard.querySelector('.element__text');
+	elementText.textContent = item.name;
+	elementImage.src = item.link;
+	elementImage.alt = item.name;
+	return newCard;
 }
 
 // Функция добавления карточки в разметку
-function renderCard (card) {
+function renderCard(card) {
 	cardsContainer.prepend(card);
 }
 
@@ -103,48 +110,63 @@ function likeCard(evt) {
 }
 
 // Функция проставления ивент-листенеров карточки, такие как лайк, удаление, открытия картинки
-function setEventListeners(NewCard) {
+function setCardEventListeners(newCard) {
 	// Кнопка удаления карточки
-	const buttonDeleteCard = NewCard.querySelector('.element__delete-button');
+	const buttonDeleteCard = newCard.querySelector('.element__delete-button');
 	buttonDeleteCard.addEventListener('click', deleteCard);
 	// Кнопка лайка
-	const buttonAddLike = NewCard.querySelector('.element__like-button');
+	const buttonAddLike = newCard.querySelector('.element__like-button');
 	buttonAddLike.addEventListener('click', likeCard);
 	// Формально это картинка и в то же время кнопка
-	const image = NewCard.querySelector('.element__image');
+	const image = newCard.querySelector('.element__image');
 	image.addEventListener('click', () =>
 		openPopupImage(image));
 }
 
 
-// Все попапы обладают своими функциями и приведение их к одной функции открытия невозможно. 
-// Либо придется создавать доп. функции опять же индивидуальными для каждого попапа.
+// Общая функция открытия попапа
+function openPopup(popup) {
+	popup.classList.add('popup__oppened');
+}
+
+// Общая функция закрытия попапа
+function closePopup(popup) {
+	popup.classList.remove('popup__oppened');
+}
 
 // Функция открытия попапа с картинкой
 function openPopupImage(image) {
-	popupPhoto.classList.add('popup-photo__oppened');
+	openPopup(popupPhoto);
 	popupPhotoImg.src = image.src;
 	popupPhotoTextInput.textContent = image.alt;
 	popupPhotoImg.alt = image.alt;
 }
 
 // Функция открытия попапа с информацией о авторе
-function openPopup() {
-	popupProfile.classList.add('popup__oppened');
+function openPopupProfile() {
+	openPopup(popupProfile);
 	nameInput.value = nameHuman.textContent;
 	professionInput.value = professionHuman.textContent;
 }
 
 // Функция открытия попапа с карточкой
 function openPopupCard() {
-	popupCard.classList.add('popup-card__oppened');
+	openPopup(popupCard);
 }
 
-// Функция закрытия попапа с инф. о авторе, с картинкой, карточки
-function closePopup() {
-	popupProfile.classList.remove('popup__oppened');
-	popupPhoto.classList.remove('popup-photo__oppened');
-	popupCard.classList.remove('popup-card__oppened');
+// Функция закрытия попапа с картинкой
+function closePopupImage() {
+	closePopup(popupPhoto);
+}
+
+// Функция закрытия попапа карточки
+function closePopupCard() {
+	closePopup(popupCard);
+}
+
+// Функция закрытия попапа профиля
+function closePopupProfile() {
+	closePopup(popupProfile);
 }
 
 // Отправка данных о авторе
@@ -152,29 +174,27 @@ function submitFormHandlerProfile(evt) {
 	evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 	professionHuman.textContent = professionInput.value;
 	nameHuman.textContent = nameInput.value;
-	closePopup();
+	closePopupProfile();
 }
 
 // Отправка данных карточки
 function submitFormHandlerPopupCard(evt) {
 	evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
-	const item = 
+	const item =
 	{
-		name:'',
-		link:''
+		name: titleInput.value,
+		link: linkInput.value
 	}
-	item.name = titleInput.value;
-	item.link = linkInput.value;
 	addCard(item);
 	evt.target.reset(); // Эта строчка очищает поля формы.
-	closePopup();
+	closePopupCard();
 }
 
 buttonAddCard.addEventListener('click', openPopupCard);
-buttonClosePopupProfile.addEventListener('click', closePopup);
-buttonEditProfile.addEventListener('click', openPopup);
-buttonClosePopupCard.addEventListener('click', closePopup);
-buttonClosePopupImage.addEventListener('click', closePopup);
+buttonClosePopupProfile.addEventListener('click', closePopupProfile);
+buttonClosePopupCard.addEventListener('click', closePopupCard);
+buttonClosePopupImage.addEventListener('click', closePopupImage);
+buttonEditProfile.addEventListener('click', openPopupProfile);
 
 formElementCard.addEventListener('submit', submitFormHandlerPopupCard);
 formElement.addEventListener('submit', submitFormHandlerProfile);
