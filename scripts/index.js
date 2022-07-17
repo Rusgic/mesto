@@ -71,15 +71,6 @@ const popupPhotoTextInput = document.querySelector('.popup__text');
 const popup = document.querySelector('.popup');
 // Кнопка сабмита
 const saveButton = document.querySelector('.button_type_save');
-const config = ({
-	formSelector: '.popup__form',
-	inputSelector: '.popup__input',
-	submitButtonSelector: '.button_type_save',
-	inactiveButtonClass: 'button__submit_inactive',
-	inputErrorClass: 'popup__input_type_error',
-	errorClass: 'popup__input-error_active'
-});
-
 
 // Рендер начальных карточек
 function renderInitialCards() {
@@ -139,11 +130,15 @@ function setCardEventListeners(newCard) {
 // Общая функция открытия попапа
 function openPopup(popup) {
 	popup.classList.add('popup__oppened');
+	popup.addEventListener("mousedown", closeClick);
+	document.addEventListener("keydown", closeEsc);
 }
 
 // Общая функция закрытия попапа
-function closePopup(evt) {
-	evt.classList.remove('popup__oppened');
+function closePopup(popup) {
+	popup.classList.remove('popup__oppened');
+	popup.removeEventListener("mousedown", closeClick);
+	document.removeEventListener("keydown", closeEsc);
 }
 
 // Функция открытия попапа с картинкой
@@ -152,16 +147,21 @@ function openPopupImage(image) {
 	popupPhotoImg.src = image.src;
 	popupPhotoTextInput.textContent = image.alt;
 	popupPhotoImg.alt = image.alt;
-	// Закрытие попапов при нажатии на оверлей
-	popup.addEventListener('mousedown', function (evt) {
-	closePopup(evt.target);
-});
-document.addEventListener('keydown', function (evt) {
-	if (evt.key === 'Escape') {
-		closePopupImage();
-	}
-});
 }
+
+const closeClick = (evt) => {
+	if (evt.target === evt.currentTarget) {
+		closePopup(evt.currentTarget);
+	}
+};
+
+const closeEsc = (evt) => {
+  if (evt.key === "Escape") {
+    const popupOppened = document.querySelector(".popup__oppened");
+    closePopup(popupOppened);
+  }
+};
+
 
 // Функция открытия попапа с информацией о авторе
 function openPopupProfile() {
@@ -170,15 +170,6 @@ function openPopupProfile() {
 	openPopup(popupProfile);
 	nameInput.value = nameHuman.textContent;
 	professionInput.value = professionHuman.textContent;
-	// Закрытие попапов при нажатии на оверлей
-	popup.addEventListener('mousedown', function (evt) {
-	closePopup(evt.target);
-});
-document.addEventListener('keydown', function (evt) {
-	if (evt.key === 'Escape') {
-		closePopupProfile();
-	}
-});
 }
 
 // Функция открытия попапа с карточкой
@@ -186,45 +177,21 @@ function openPopupCard() {
 	disabledButton(saveButton);
 	enableValidation();
 	openPopup(popupCard);
-	// Закрытие попапов при нажатии на оверлей
-	popup.addEventListener('mousedown', function (evt) {
-	closePopup(evt.target);
-});
-document.addEventListener('keydown', function (evt) {
-	if (evt.key === 'Escape') {
-		closePopupCard();
-	}
-});
 }
 
 // Функция закрытия попапа с картинкой
 function closePopupImage() {
 	closePopup(popupPhoto);
-	document.removeEventListener('keydown', function (evt) {
-		if (evt.key === 'Escape') {
-			closePopupImage();
-		}
-	});
 }
 
 // Функция закрытия попапа карточки
 function closePopupCard() {
 	closePopup(popupCard);
-	document.removeEventListener('keydown', function (evt) {
-		if (evt.key === 'Escape') {
-			closePopupCard();
-		}
-	});
 }
 
 // Функция закрытия попапа профиля
 function closePopupProfile() {
 	closePopup(popupProfile);
-	document.removeEventListener('keydown', function (evt) {
-		if (evt.key === 'Escape') {
-			closePopupProfile();
-		}
-	});
 }
 
 

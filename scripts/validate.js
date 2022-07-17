@@ -74,11 +74,11 @@ function activeButton(evt) {
 	evt.removeAttribute('disabled', true);
 }
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-}); 
+enableValidation(config = ({
+	formSelector: '.popup__form',
+	inputSelector: '.popup__input',
+	submitButtonSelector: '.button_type_save',
+	inactiveButtonClass: 'button__submit_inactive',
+	inputErrorClass: 'popup__input_type_error',
+	errorClass: 'popup__input-error_active'
+}));

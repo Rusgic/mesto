@@ -8,8 +8,8 @@
 	left:0px;
 	width:100vw;
 	height:100vh;
+	transition: all 0.8s ease;
+	opacity: 0;
 	visibility: hidden;
-  opacity: 0;
-  transition:hidden 0.3s linear,opacity 0.3s linear;
 }
 

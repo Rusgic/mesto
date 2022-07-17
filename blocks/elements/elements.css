@@ -4,7 +4,8 @@
 	grid-template-columns: repeat(auto-fit, 282px);
 	gap:17px;
 	margin:0 auto 67px;
-	justify-content: left;
+	/*Предыдущий ревьюер просил сделать по левому углу, хотя изначально у меня было по центру*/
+	justify-content: center;
 }
 
 @media screen and (min-width:320px) and (max-width:1279px) {
