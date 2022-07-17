@@ -67,10 +67,7 @@ const cardsContainer = document.querySelector('.elements');
 const popupPhotoImg = document.querySelector('.popup__big-photo');
 // Переменная с текстом карточки
 const popupPhotoTextInput = document.querySelector('.popup__text');
-// Общий Popup 
-const popup = document.querySelector('.popup');
-// Кнопка сабмита
-const saveButton = document.querySelector('.button_type_save');
+
 
 // Рендер начальных карточек
 function renderInitialCards() {
@@ -150,23 +147,21 @@ function openPopupImage(image) {
 }
 
 const closeClick = (evt) => {
-	if (evt.target === evt.currentTarget) {
+	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
 		closePopup(evt.currentTarget);
-	}
+	};
 };
 
 const closeEsc = (evt) => {
-  if (evt.key === "Escape") {
-    const popupOppened = document.querySelector(".popup__oppened");
-    closePopup(popupOppened);
-  }
+	if (evt.key === "Escape") {
+		const popupOppened = document.querySelector(".popup__oppened");
+		closePopup(popupOppened);
+	}
 };
 
 
 // Функция открытия попапа с информацией о авторе
 function openPopupProfile() {
-	disabledButton(saveButton);
-	enableValidation();
 	openPopup(popupProfile);
 	nameInput.value = nameHuman.textContent;
 	professionInput.value = professionHuman.textContent;
@@ -174,8 +169,6 @@ function openPopupProfile() {
 
 // Функция открытия попапа с карточкой
 function openPopupCard() {
-	disabledButton(saveButton);
-	enableValidation();
 	openPopup(popupCard);
 }
 
