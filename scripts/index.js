@@ -70,13 +70,13 @@ const popupPhotoImg = document.querySelector('.popup__big-photo');
 // Переменная с текстом карточки
 const popupPhotoTextInput = document.querySelector('.popup__text');
 const config = ({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.button_type_save',
-  inactiveButtonClass: 'button__submit_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active'
-}); 
+	formSelector: '.popup__form',
+	inputSelector: '.popup__input',
+	submitButtonSelector: '.button_type_save',
+	inactiveButtonClass: 'button__submit_inactive',
+	inputErrorClass: 'popup__input_type_error',
+	errorClass: 'popup__input-error_active'
+});
 
 
 // Рендер начальных карточек
