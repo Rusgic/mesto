@@ -7,4 +7,6 @@
   font-size: 12px;
   line-height: 15px;
   z-index: 2;
+  display:block;
+  min-height: 30px;
 }

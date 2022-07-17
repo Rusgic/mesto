@@ -56,12 +56,29 @@ const hasInvalidInput = (inputList) => {
 // функция блокировки кнопки сабмита
 const toggleButtonState = (inputList, buttonElement) => {
 	if (hasInvalidInput(inputList)) {
-		buttonElement.classList.add(config.inactiveButtonClass);
-		buttonElement.setAttribute('disabled', true);
+		disabledButton(buttonElement);
 	} else {
-		buttonElement.classList.remove(config.inactiveButtonClass);
-		buttonElement.removeAttribute('disabled');
+		activeButton(buttonElement);
 	}
 };
 
-enableValidation();
+// Функция деактивации кнопки сабмита
+function disabledButton(evt) {
+	evt.classList.add(config.inactiveButtonClass);
+	evt.setAttribute('disabled', true);
+}
+
+// Функция активации кнопки сабмита
+function activeButton(evt) {
+	evt.classList.remove(config.inactiveButtonClass);
+	evt.removeAttribute('disabled', true);
+}
+
+enableValidation({
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+}); 
