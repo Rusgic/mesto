@@ -7,7 +7,7 @@ const config = {
 	errorClass: 'popup__input-error_active'
 };
 
-
+// Функция, которая показывает класс с ошибкой
 const showInputError = (formElement, inputElement, errorMessage, { inputErrorClass, errorClass }) => {
 	const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
 	inputElement.classList.add(inputErrorClass);
@@ -49,9 +49,6 @@ const setEventInputListeners = (formElement, { inputSelector, submitButtonSelect
 const enableValidation = ({ formSelector, ...rest }) => {
 	const formList = Array.from(document.querySelectorAll(formSelector));
 	formList.forEach((formElement) => {
-		formElement.addEventListener('submit', (evt) => {
-			evt.preventDefault();
-		});
 		setEventInputListeners(formElement, rest);
 	});
 };
@@ -83,6 +80,5 @@ function activeButton(evt, { inactiveButtonClass }) {
 	evt.classList.remove(inactiveButtonClass);
 	evt.removeAttribute('disabled', true);
 }
-
 
 enableValidation(config);

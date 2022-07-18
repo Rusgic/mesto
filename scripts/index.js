@@ -1,4 +1,3 @@
-
 // Кнопка добавления карточки
 const buttonAddCard = document.querySelector('.profile__add-button');
 // Кнопка добавления информации о авторе
@@ -67,7 +66,8 @@ const cardsContainer = document.querySelector('.elements');
 const popupPhotoImg = document.querySelector('.popup__big-photo');
 // Переменная с текстом карточки
 const popupPhotoTextInput = document.querySelector('.popup__text');
-
+// Кнопка сабмита формы добавления карточки
+const buttonSubmitAddCardForm = formElementCard.querySelector('.button_type_save');
 
 // Рендер начальных карточек
 function renderInitialCards() {
@@ -147,7 +147,8 @@ function openPopupImage(image) {
 }
 
 const closeClick = (evt) => {
-	if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close')) {
+	// из раздела можно лучше. Пока классы менять не стал, дабы ничего больше не испортить, но к совету прислушаюсь.
+	if (evt.target === evt.currentTarget || evt.target.classList.contains('button_type_close')) {
 		closePopup(evt.currentTarget);
 	};
 };
@@ -170,6 +171,7 @@ function openPopupProfile() {
 // Функция открытия попапа с карточкой
 function openPopupCard() {
 	openPopup(popupCard);
+	disabledButton(buttonSubmitAddCardForm, 'button__submit_inactive');
 }
 
 // Функция закрытия попапа с картинкой
@@ -216,4 +218,3 @@ buttonClosePopupImage.addEventListener('click', closePopupImage);
 buttonEditProfile.addEventListener('click', openPopupProfile);
 formElementCard.addEventListener('submit', submitFormHandlerPopupCard);
 formElementProfile.addEventListener('submit', submitFormHandlerProfile);
-

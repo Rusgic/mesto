@@ -29,3 +29,12 @@
 .button_type_save:hover {
 	opacity: 0.8;
 }
+
+.button_type_save:disabled {
+	color:rgba(0,0,0,0.2);
+	background-color: white;
+  border: 1px solid rgba(0,0,0,0.2);
+  border-radius: 2px;
+  color:rgba(0,0,0,0.2);
+  cursor:default;
+}
